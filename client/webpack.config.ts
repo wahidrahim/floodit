@@ -1,10 +1,9 @@
-const path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+import path from 'path'
+import HtmlWebpackPlugin from 'html-webpack-plugin'
+import webpack from 'webpack'
 
-const entryPath = path.resolve(__dirname, 'index.tsx')
-
-module.exports = {
-  entry: entryPath,
+const config: webpack.Configuration = {
+  entry: 'client/index.tsx',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js'
@@ -18,3 +17,5 @@ module.exports = {
     rules: [{ test: /\.ts|\.tsx$/, use: 'ts-loader' }]
   }
 }
+
+export default config
