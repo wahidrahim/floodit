@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "webpack-dev-server --config client/webpack.config.ts --hot --open"
+    "start": "ts-node node_modules/.bin/webpack-dev-server --config client/webpack.config.ts --hot --open"
   },
   "dependencies": {
     "@types/cors": "^2.8.6",
