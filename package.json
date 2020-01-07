@@ -17,6 +17,7 @@
     "babel-preset-react-app": "^9.1.0",
     "camelcase": "^5.3.1",
     "case-sensitive-paths-webpack-plugin": "2.2.0",
+    "cors": "^2.8.5",
     "css-loader": "3.2.0",
     "dotenv": "8.2.0",
     "dotenv-expand": "5.1.0",
@@ -54,6 +55,7 @@
     "semver": "6.3.0",
     "style-loader": "1.0.0",
     "terser-webpack-plugin": "2.2.1",
+    "ts-node": "^8.5.4",
     "ts-pnp": "1.1.5",
     "url-loader": "2.3.0",
     "webpack": "4.41.2",
@@ -62,6 +64,7 @@
     "workbox-webpack-plugin": "4.3.1"
   },
   "scripts": {
+    "api": "ts-node api/index.ts",
     "start": "node client/scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js"
@@ -135,5 +138,11 @@
     "presets": [
       "react-app"
     ]
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.6",
+    "@types/express": "^4.17.2",
+    "@types/node": "^13.1.4",
+    "typescript": "^3.7.4"
   }
 }
