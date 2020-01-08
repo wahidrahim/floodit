@@ -1,9 +1,16 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
+import Cell from './components/cell.component'
 
 class App extends React.Component {
   render() {
-    return <h1>It's working!</h1>
+    return (
+      <div className="grid">
+        <Cell color={1} />
+        <Cell color={2} />
+        <Cell color={3} />
+        <Cell color={4} />
+      </div>
+    )
   }
 }
 
