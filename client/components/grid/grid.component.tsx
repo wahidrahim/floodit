@@ -8,33 +8,31 @@ interface GridProps {
 }
 
 class Grid extends React.Component<GridProps> {
-  width = 200
-  height = 200
-  gridCellSizes = ''
+  gridStyles = {
+    width: 200,
+    height: 200,
+    gridTemplateColumns: '',
+    gridTemplateRows: ''
+  }
 
   constructor(props: GridProps) {
     super(props)
 
     // TODO: ensure children must be present, to avoid nullish coellescing, and not-null identifiers
     const numberOfChildren = this.props.children?.valueOf().length // Children array length
-    const CellSize = 100 / (numberOfChildren! / 2)
+    let cellSizes = ''
 
     for (let i = 0; i < numberOfChildren! / 2; i++) {
-      this.gridCellSizes += `${CellSize}%`
+      cellSizes += `${100 / (numberOfChildren! / 2)}%`
     }
+
+    this.gridStyles.gridTemplateColumns = cellSizes
+    this.gridStyles.gridTemplateRows = cellSizes
   }
 
   render() {
     return (
-      <div
-        className="grid"
-        style={{
-          width: this.width,
-          height: this.height,
-          gridTemplateColumns: this.gridCellSizes,
-          gridTemplateRows: this.gridCellSizes
-        }}
-      >
+      <div className="grid" style={this.gridStyles}>
         {this.props.children}
       </div>
     )
