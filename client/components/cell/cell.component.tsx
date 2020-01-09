@@ -1,13 +1,11 @@
-import React from 'react'
+import React, { FunctionComponent } from 'react'
 
-interface CellProps {
+export interface ICellProps {
   color: number | string
 }
 
-class Cell extends React.Component<CellProps> {
-  render() {
-    return <div className="cell">{this.props.color}</div>
-  }
+const Cell: FunctionComponent<ICellProps> = ({ color }) => {
+  return <div className="cell">{color}</div>
 }
 
 export default Cell

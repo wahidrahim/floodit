@@ -1,42 +1,39 @@
-import React from 'react'
+import React, { FunctionComponent } from 'react'
+import { ICellProps } from '../cell/cell.component'
 
 import './grid.styles.scss'
 
-interface GridProps {
+interface IGridProps {
   rows?: number
   cols?: number
+  children: Array<React.ReactElement<ICellProps>>
 }
 
-class Grid extends React.Component<GridProps> {
-  gridStyles = {
+const Grid: FunctionComponent<IGridProps> = props => {
+  const gridStyles = {
     width: 200,
     height: 200,
     gridTemplateColumns: '',
     gridTemplateRows: ''
   }
 
-  constructor(props: GridProps) {
-    super(props)
+  // Set cell sizes
+  const numberOfCells = props.children.length
+  const gridSize = numberOfCells / 2
+  let cellSizes = ''
 
-    // TODO: ensure children must be present, to avoid nullish coellescing, and not-null identifiers
-    const numberOfChildren = this.props.children?.valueOf().length // Children array length
-    let cellSizes = ''
-
-    for (let i = 0; i < numberOfChildren! / 2; i++) {
-      cellSizes += `${100 / (numberOfChildren! / 2)}%`
-    }
-
-    this.gridStyles.gridTemplateColumns = cellSizes
-    this.gridStyles.gridTemplateRows = cellSizes
+  for (let i = 0; i < gridSize; i++) {
+    cellSizes += `${100 / gridSize}%` // e.g. "50%50%", or "25%25%25%25%", etc...
   }
 
-  render() {
-    return (
-      <div className="grid" style={this.gridStyles}>
-        {this.props.children}
-      </div>
-    )
-  }
+  gridStyles.gridTemplateColumns = cellSizes
+  gridStyles.gridTemplateRows = cellSizes
+
+  return (
+    <div className="grid" style={gridStyles}>
+      {props.children}
+    </div>
+  )
 }
 
 export default Grid
